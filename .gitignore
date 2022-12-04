@@ -72,10 +72,11 @@ dkms.conf
 
 CMakeLists.txt.user
 CMakeCache.*
+CMakeFiles
 CMakeFiles/*
 CMakeScripts
 Testing
-# Makefile
+Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
@@ -447,3 +448,4 @@ MigrationBackup/
 !.vimrc.lua
 !.root
 !.clang-format
+.cmake/
