@@ -452,3 +452,4 @@ MigrationBackup/
 .cmake/
 
 build_*
+CMakeUserPresets.json
