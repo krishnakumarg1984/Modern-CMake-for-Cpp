@@ -9,29 +9,25 @@ end
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
-if not local_vimrc_has_run then
-  -- list of globally installed sources in $PATH (not those installed with ':FInstall')
-  null_ls.register {
-    formatting.stylua.with {
-      condition = function(utils)
-        return utils.root_has_file { "stylua.toml", ".stylua.toml" }
-      end,
-    },
-    -- formatting.black,  -- not in $PATH, but installed with ':FInstall' which is automatically made available with ':e!'
-    -- formatting.beautysh,
-    formatting.clang_format,
-    formatting.shfmt,
-    -- formatting.shellharden,
-    diagnostics.cppcheck,
-    diagnostics.cpplint,
-    diagnostics.clang_check,
-    diagnostics.shellcheck.with { diagnostics_format = "[#{c}] #{m} (#{s})" },
-    -- null_ls.builtins.code_actions.gitrebase,
-    -- null_ls.builtins.hover.dictionary,
-  }
-  null_ls.enable {}
-end
-local_vimrc_has_run = 1 -- silly workaround to stop local '.vimrc.lua' from being loaded twice due to a bug in the "klen/nvim-config-local" plugin
+-- list of globally installed sources in $PATH (not those installed with ':FInstall')
+null_ls.register {
+  formatting.clang_format,
+  formatting.cmake_format,
+  formatting.codespell,
+  formatting.gersemi,
+  formatting.stylua,
+  diagnostics.clang_check,
+  diagnostics.cmake_lint,
+  diagnostics.codespell,
+  diagnostics.cppcheck,
+  diagnostics.cpplint,
+  diagnostics.gitlint,
+  -- diagnostics.shellcheck.with { diagnostics_format = "[#{c}] #{m} (#{s})" },
+  -- formatting.shfmt,
+  -- null_ls.builtins.code_actions.cspell,
+  -- null_ls.builtins.hover.dictionary,
+}
+null_ls.enable {}
 
 -- Other project-specific 'diagnostic-linters' and 'formatters' to consider {{{
 -- formatting.asmformat,
@@ -90,9 +86,9 @@ if not status_ok_nvim_lint then
   return
 end
 nvim_lint.linters_by_ft = {
-  c = { "clazy", "flawfinder" },
+  c = { "clang-tidy", "clazy", "flawfinder" },
   cmake = { "cmakelint" },
-  cpp = { "cpplint", "flawfinder" },
+  cpp = { "clang-tidy", "flawfinder" },
   java = { "checkstyle" },
   latex = { "lacheck" },
   python = { "pycodestyle" },
