@@ -86,9 +86,9 @@ if not status_ok_nvim_lint then
   return
 end
 nvim_lint.linters_by_ft = {
-  c = { "clang-tidy", "clazy", "flawfinder" },
+  c = { "clangtidy", "clazy", "flawfinder" },
   cmake = { "cmakelint" },
-  -- cpp = { "clang-tidy", "flawfinder" },
+  cpp = { "clangtidy", "flawfinder" },
   java = { "checkstyle" },
   latex = { "lacheck" },
   python = { "pycodestyle" },
