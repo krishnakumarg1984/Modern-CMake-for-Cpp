@@ -88,7 +88,7 @@ end
 nvim_lint.linters_by_ft = {
   c = { "clang-tidy", "clazy", "flawfinder" },
   cmake = { "cmakelint" },
-  cpp = { "clang-tidy", "flawfinder" },
+  -- cpp = { "clang-tidy", "flawfinder" },
   java = { "checkstyle" },
   latex = { "lacheck" },
   python = { "pycodestyle" },
