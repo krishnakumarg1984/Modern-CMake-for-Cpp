@@ -6,5 +6,4 @@ set(FOO_ENABLE ON)
 set(FOO_STRING1 "abc")
 set(FOO_STRING2 "def")
 configure_file(configure.h.in configured/configure.h)
-target_include_directories(configure PRIVATE
-                           ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(configure PRIVATE ${CMAKE_CURRENT_BINARY_DIR})

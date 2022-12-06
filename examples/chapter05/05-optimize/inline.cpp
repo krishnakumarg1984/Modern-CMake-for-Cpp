@@ -1,15 +1,17 @@
 #include <iostream>
 
-using namespace std;
 struct X {
-  void im_inlined(){ cout << "hi\n"; };
-  void me_too();
+    static void im_inlined() { std::cout << "hi\n"; }
+    static void me_too();
 };
-inline void X::me_too() { cout << "bye\n"; };
+inline void X::me_too() {
+    std::cout << "bye\n";
+}
 
 int main() {
-  X x;
-  x.im_inlined();
-  x.me_too();
-  return 0;
+    X x;
+    X::im_inlined();
+    x.me_too();
+
+    return 0;
 }

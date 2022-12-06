@@ -1,17 +1,16 @@
-#include <iostream>
 #include "configured/configure.h"
+
+#include <iostream>
 
 // special macros to convert definitions into c-strings:
 #define str(s) #s
 #define xstr(s) str(s)
 
-using namespace std;
-int main()
-{
+int main() {
 #ifdef FOO_ENABLE
-  cout << "FOO_ENABLE: ON" << endl;
+    std::cout << "FOO_ENABLE: ON" << '\n';
 #endif
-  cout << "FOO_STRING1: " << xstr(FOO_STRING1) << endl;
-  cout << "FOO_STRING2: " << xstr(FOO_STRING2) << endl;
-  cout << "FOO_UNDEFINED: " << xstr(FOO_UNDEFINED) << endl;
+    std::cout << "FOO_STRING1: " << xstr(FOO_STRING1) << '\n';
+    std::cout << "FOO_STRING2: " << xstr(FOO_STRING2) << '\n';
+    std::cout << "FOO_UNDEFINED: " << xstr(FOO_UNDEFINED) << '\n';
 }
