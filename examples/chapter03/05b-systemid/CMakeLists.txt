@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.20.0)
+project(system_identification)
+
+# message(STATUS "This is ${CMAKE_SYSTEM_NAME} speaking.")
+message("${CMAKE_SYSTEM}")
+message("${CMAKE_SYSTEM_NAME}")
+message("${CMAKE_SYSTEM_PROCESSOR}")
+message("${CMAKE_SYSTEM_VERSION}")
+
+# Note: CMAKE_SYSTEM_NAME is blank in script mode
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    message(STATUS "Doing things the usual way")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    message(STATUS "Thinking differently")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    message(STATUS "I'm supported here too.")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "AIX")
+    message(STATUS "I buy mainframes.")
+else()
+    message(STATUS "This is ${CMAKE_SYSTEM_NAME} speaking.")
+endif()
+
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    message(STATUS "Target is 64 bits")
+endif()
