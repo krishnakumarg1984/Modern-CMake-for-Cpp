@@ -1,3 +1,3 @@
 struct shared {
-  static inline int i = 1;
+    static inline const int i = 1;
 };

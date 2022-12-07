@@ -1,9 +1,17 @@
+#include <iostream>
+
 extern void a();
 extern void b();
-extern void duplicated();
+// extern void duplicated();
+
+void duplicated() {
+    std::cout << "duplicated MAIN" << std::endl;
+}
 
 int main() {
-  a();
-  b();
-  duplicated();
+    a();
+    b();
+    duplicated();
+
+    return 0;
 }

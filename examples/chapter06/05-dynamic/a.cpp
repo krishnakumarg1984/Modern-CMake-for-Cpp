@@ -1,7 +1,9 @@
 #include <iostream>
+
 void a() {
-  std::cout << "A" << std::endl;
+    std::cout << "A" << std::endl;
 }
+
 void duplicated() {
-  std::cout << "duplicated A" << std::endl;
+    std::cout << "duplicated A" << std::endl;
 }

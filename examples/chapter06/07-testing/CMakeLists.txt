@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.20.0)
-project(Testing CXX)
+
+project(Testing
+  LANGUAGES CXX
+)
 
 add_library(program program.cpp)
 
