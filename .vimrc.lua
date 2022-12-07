@@ -11,21 +11,25 @@ local diagnostics = null_ls.builtins.diagnostics
 
 -- list of globally installed sources in $PATH (not those installed with ':FInstall')
 null_ls.register {
-  formatting.clang_format,
-  formatting.cmake_format,
-  -- formatting.codespell,
-  formatting.gersemi,
-  formatting.stylua,
-  diagnostics.clang_check,
-  diagnostics.cmake_lint,
   -- diagnostics.codespell,
-  diagnostics.cppcheck,
-  diagnostics.cpplint,
-  diagnostics.gitlint,
   -- diagnostics.shellcheck.with { diagnostics_format = "[#{c}] #{m} (#{s})" },
+  -- formatting.codespell,
   -- formatting.shfmt,
   -- null_ls.builtins.code_actions.cspell,
   -- null_ls.builtins.hover.dictionary,
+  diagnostics.buf,
+  diagnostics.clang_check,
+  diagnostics.cmake_lint,
+  diagnostics.cppcheck,
+  diagnostics.cpplint,
+  diagnostics.gitlint,
+  diagnostics.protolint,
+  formatting.buf,
+  formatting.clang_format,
+  formatting.cmake_format,
+  formatting.gersemi,
+  formatting.protolint,
+  formatting.stylua,
 }
 null_ls.enable {}
 

@@ -454,4 +454,4 @@ MigrationBackup/
 build_*
 CMakeUserPresets.json
 
-[H,h]ello.txt
+[H,h]ello.*
