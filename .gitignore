@@ -455,3 +455,4 @@ build_*
 CMakeUserPresets.json
 
 [H,h]ello.*
+examples/**/yamp-cpp/

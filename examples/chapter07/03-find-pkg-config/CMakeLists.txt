@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.20.0)
-project(FindPkgConfig CXX)
+project(FindPkgConfig
+  LANGUAGES CXX
+)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(PQXX REQUIRED IMPORTED_TARGET libpqxx)
