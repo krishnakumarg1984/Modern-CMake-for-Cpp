@@ -18,9 +18,13 @@ null_ls.register {
   -- null_ls.builtins.code_actions.cspell,
   -- null_ls.builtins.hover.dictionary,
   diagnostics.buf,
-  diagnostics.clang_check,
+  diagnostics.clang_check.with {
+    extra_args = { "-x c++" },
+  },
   diagnostics.cmake_lint,
-  diagnostics.cppcheck,
+  diagnostics.cppcheck.with {
+    extra_args = { "-std=c++20" },
+  },
   diagnostics.cpplint,
   diagnostics.gitlint,
   diagnostics.protolint,
