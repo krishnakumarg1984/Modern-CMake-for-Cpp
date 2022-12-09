@@ -1,4 +1,7 @@
-int run(); // declaration
+int run();  // declaration
+
 int main() {
-  run();
+    run();
+
+    return 0;
 }

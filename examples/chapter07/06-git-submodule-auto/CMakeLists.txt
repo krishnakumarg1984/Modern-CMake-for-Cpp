@@ -12,7 +12,7 @@ configure_file(config.yaml config.yaml COPYONLY)
 if(NOT TARGET yaml-cpp)
   message("yaml-cpp not found, initializing git submodule")
   execute_process(
-    COMMAND git submodule update --init -- external/yaml-cpp
+    COMMAND git submodule update --init -- extern/yaml-cpp
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
   add_subdirectory(extern/yaml-cpp)
 endif()
