@@ -1,27 +1,33 @@
 # vim: ft=yaml:
 Language: Cpp
+# Standard: c++20
+Standard: Auto
 BasedOnStyle: Chromium
 # https://github.com/friendlyanon/cmake-init/blob/master/cmake-init/templates/common/.clang-format
 # https://github.com/TheLartians/ModernCppStarter/blob/master/.clang-format
 # https://github.com/filipdutescu/modern-cpp-template/blob/master/.clang-format
 # https://github.com/martinus/nanobench/blob/master/src/include/.clang-format
+# https://github.com/kubasejdak/hal/blob/master/.clang-format  # June 2023
 AccessModifierOffset: -2
 AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Left
 # AlignAfterOpenBracket: BlockIndent
-AlignConsecutiveAssignments: 'true'
-AlignConsecutiveBitFields: false
-AlignConsecutiveDeclarations: false
-AlignConsecutiveMacros: false
-AlignEscapedNewlines: DontAlign
-AlignOperands: 'true'
-AlignTrailingComments: 'true'
-AllowAllArgumentsOnNextLine: true
+AlignConsecutiveAssignments: "AcrossEmptyLinesAndComments"
+AlignConsecutiveBitFields: "AcrossEmptyLinesAndComments"
+AlignConsecutiveDeclarations: "None"
+AlignConsecutiveMacros: "AcrossEmptyLinesAndComments"
+# AlignEscapedNewlines: DontAlign
+AlignEscapedNewlines: Right
+AlignOperands: "AlignAfterOperator"
+AlignTrailingComments: true
+# AllowAllArgumentsOnNextLine: true
+AllowAllArgumentsOnNextLine: false
 AllowAllConstructorInitializersOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortEnumsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: Inline
+AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: false
@@ -47,6 +53,7 @@ BraceWrapping:
   SplitEmptyFunction: true
   SplitEmptyNamespace: true
   SplitEmptyRecord: true
+BreakAfterAttributes: Always
 BreakAfterJavaFieldAnnotations: true
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
@@ -61,7 +68,7 @@ CompactNamespaces: false
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
-Cpp11BracedListStyle: 'false'
+Cpp11BracedListStyle: false
 DeriveLineEnding: false
 DerivePointerAlignment: false
 DisableFormat: false
@@ -72,6 +79,19 @@ ForEachMacros:
   - Q_FOREACH
   - BOOST_FOREACH
 IncludeBlocks: Regroup
+IncludeCategories:
+  # Headers in <> without extension.
+  - Regex: '<([A-Za-z0-9\/_-])+>'
+    Priority: 4
+  # Headers in <> from specific external libraries.
+  - Regex: '<(boost|catch2|CLI|fmt|hash|nlohmann|range|spdlog)\/([A-Za-z0-9.\/_-])+>'
+    Priority: 3
+  # Headers in <> with extension.
+  - Regex: '<([A-Za-z0-9.\/_-])+>'
+    Priority: 2
+  # Headers in "" with extension.
+  - Regex: '"([A-Za-z0-9.\/_-])+"'
+    Priority: 1
 IncludeIsMainRegex: ''
 IncludeIsMainSourceRegex: ''
 IndentCaseBlocks: false
@@ -88,7 +108,7 @@ KeepEmptyLinesAtTheStartOfBlocks: false
 MacroBlockBegin: ''
 MacroBlockEnd: ''
 MaxEmptyLinesToKeep: 1
-NamespaceIndentation: None
+NamespaceIndentation: Inner
 ObjCBinPackProtocolList: Never
 ObjCBlockIndentWidth: 2
 ObjCBreakBeforeNestedBlockParam: true
@@ -134,7 +154,7 @@ RawStringFormats:
     CanonicalDelimiter: ''
     BasedOnStyle: google
 ReflowComments: true
-SortIncludes: true
+SortIncludes: CaseInsensitive
 SortUsingDeclarations: true
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
@@ -144,19 +164,18 @@ SpaceBeforeAssignmentOperators: true
 SpaceBeforeCpp11BracedList: true
 SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
-SpaceBeforeParens: ControlStatementsExceptForEachMacros
+SpaceBeforeParens: ControlStatementsExceptControlMacros
 SpaceBeforeRangeBasedForLoopColon: true
 SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 2
-SpacesInAngles: false
+SpacesInAngles: "Never"
 SpacesInConditionalStatement: true
 SpacesInContainerLiterals: false
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard: Auto
 StatementMacros:
   - Q_UNUSED
   - QT_REQUIRE_VERSION

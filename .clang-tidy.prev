@@ -1,0 +1,7 @@
+# Settings file automatically used by clang-tidy
+
+# Rationale for disabling warnings:
+
+Checks: "-*,boost-use-to-string,bugprone-*,cert-*,clang-analyzer-*,cppcoreguidelines-*,google-readability-casting,hicpp-*,misc-*,modernize-*,-modernize-use-trailing-return-type,use-emplace,mpi-*,openmp-*,portability-*,readability-*,performance-*,-readability-magic-numbers,-cppcoreguidelines-avoid-magic-numbers"
+
+# WarningsAsErrors: '*'

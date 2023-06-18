@@ -5,28 +5,7 @@
 
 # Enable ALL the things! Except not really
 # misc-non-private-member-variables-in-classes: the options don't do anything
-Checks: "*,\
-  -abseil-*,\
-  -altera-id-dependent-backward-branch,\
-  -altera-unroll-loops,\
-  -bugprone-easily-swappable-parameters,\
-  -concurrency-mt-unsafe,\
-  -cppcoreguidelines-avoid-magic-numbers,\
-  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,\
-  -fuchsia-*,\
-  -google-readability-todo,\
-  -google-runtime-int,\
-  -hicpp-no-array-decay,\
-  -llvm-header-guard,\
-  -llvm-include-order,\
-  -llvmlibc-*,\
-  -modernize-use-trailing-return-type,\
-  -readability-identifier-length,\
-  -readability-identifier-naming,\
-  -readability-magic-numbers,\
-  -zircon-*,\
-  fuchsia-multiple-inheritance,\
-  -misc-non-private-member-variables-in-classes"
+Checks: "*,-abseil-*,-altera-id-dependent-backward-branch,-altera-unroll-loops,-bugprone-easily-swappable-parameters,-concurrency-mt-unsafe,-cppcoreguidelines-avoid-magic-numbers,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-fuchsia-*,-google-readability-todo,-google-runtime-int,-hicpp-no-array-decay,-llvm-header-guard,-llvm-include-order,-llvmlibc-*,-modernize-use-trailing-return-type,-readability-identifier-length,-readability-identifier-naming,-readability-magic-numbers,-zircon-*,fuchsia-multiple-inheritance,-misc-non-private-member-variables-in-classes"
 WarningsAsErrors: ''
 # HeaderFilterRegex: '^((?!/cocos2d-x/external/|/cocos/scripting/).)*$'
 HeaderFilterRegex: ''
@@ -38,7 +17,7 @@ CheckOptions:
     value: 'IgnoreClassesWithAllMemberVariablesBeingPublic'
   - key: 'bugprone-argument-comment.StrictMode'
     value: 'true'
-# Prefer using enum classes with 2 values for parameters instead of bools
+  # Prefer using enum classes with 2 values for parameters instead of bools
   - key: 'bugprone-argument-comment.CommentBoolLiterals'
     value: 'true'
   - key: 'bugprone-misplaced-widening-cast.CheckImplicitCasts'
@@ -67,7 +46,7 @@ CheckOptions:
     value: 'true'
   - key: 'readability-redundant-access-specifiers.CheckFirstDeclaration'
     value: 'true'
-# These seem to be the most common identifier styles
+  # These seem to be the most common identifier styles
   - key: 'readability-identifier-naming.AbstractClassCase'
     value: 'lower_case'
   - key: 'readability-identifier-naming.ClassCase'

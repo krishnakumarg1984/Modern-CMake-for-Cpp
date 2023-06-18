@@ -1,0 +1,26 @@
+﻿---
+BasedOnStyle: Chromium
+AlignConsecutiveAssignments: 'true'
+AlignOperands: 'true'
+AllowShortFunctionsOnASingleLine: None
+BreakBeforeBinaryOperators: All
+ColumnLimit: '120'
+Cpp11BracedListStyle: 'false'
+IndentWidth: '4'
+SpaceBeforeCpp11BracedList: 'true'
+BraceWrapping:
+  AfterEnum: {if cpp}true{end}{if c}false{end}
+  AfterStruct: {if cpp}true{end}{if c}false{end}
+  AfterUnion: {if cpp}true{end}{if c}false{end}
+  AfterExternBlock: {if cpp}true{end}{if c}false{end}
+IncludeCategories:{if cpp}
+  # Standard library headers come before anything else
+  - Regex: '^<[a-z_]+>'
+    Priority: -1{end}
+  - Regex: '^<.+\.h{if cpp}(pp)?{end}>'
+    Priority: 1{if cpp}
+  - Regex: '^<.*'
+    Priority: 2{end}
+  - Regex: '.*'
+    Priority: {if cpp}3{end}{if c}2{end}
+...
