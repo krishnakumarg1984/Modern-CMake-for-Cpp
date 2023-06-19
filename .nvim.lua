@@ -25,7 +25,7 @@ end
 
 local cppcheck_project_arg = ""
 local compilation_database_filename = "compile_commands.json"
-if vim.fn.exists(compilation_database_filename) == 1 then
+if vim.fn.filereadable(compilation_database_filename) == 1 then
   cppcheck_project_arg = "--project=" .. compilation_database_filename
 end
 
