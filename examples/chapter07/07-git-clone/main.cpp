@@ -1,7 +1,7 @@
+#include "yaml-cpp/yaml.h"
+
 #include <iostream>
 #include <string>
-
-#include "yaml-cpp/yaml.h"
 
 int main() {
     std::string name { "Guest" };

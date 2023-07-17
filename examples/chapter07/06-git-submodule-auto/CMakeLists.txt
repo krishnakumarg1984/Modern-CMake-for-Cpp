@@ -6,8 +6,7 @@ project(GitSubmoduleAuto
 add_executable(welcome main.cpp)
 configure_file(config.yaml config.yaml COPYONLY)
 
-# find_package(yaml-cpp QUIET)# an older version is usually available, can
-# specify the exact version requirement here
+find_package(yaml-cpp QUIET) # an older version is usually available, can specify the exact version requirement here
 
 if(NOT TARGET yaml-cpp)
   message("yaml-cpp not found, initializing git submodule")

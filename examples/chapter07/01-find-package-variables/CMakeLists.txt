@@ -7,7 +7,8 @@ project(FindPackageProtobufVariables
 find_package(Protobuf REQUIRED)
 protobuf_generate_cpp(GENERATED_SRC GENERATED_HEADER message.proto)
 
-add_executable(main main.cpp ${GENERATED_SRC} ${GENERATED_HEADER})
+# add_executable(main main.cpp ${GENERATED_SRC} ${GENERATED_HEADER})
+add_executable(main main.cpp ${GENERATED_SRC})
 target_link_libraries(main PRIVATE ${Protobuf_LIBRARIES})
 target_include_directories(
   main

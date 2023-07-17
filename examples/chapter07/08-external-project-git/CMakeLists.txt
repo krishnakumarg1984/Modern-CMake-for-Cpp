@@ -10,7 +10,7 @@ include(ExternalProject)
 externalproject_add(
   external-yaml-cpp
   GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
-  GIT_TAG yaml-cpp-0.6.3)
+  GIT_TAG yaml-cpp-0.7.0)
 target_link_libraries(welcome PRIVATE yaml-cpp)
 
 include(CMakePrintHelpers)

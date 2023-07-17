@@ -1,15 +1,16 @@
-#include <string>
-#include <iostream>
 #include "yaml-cpp/yaml.h"
 
-using namespace std;
+#include <iostream>
+#include <string>
+
 int main() {
-  string name = "Guest";
+    std::string name { "Guest" };
 
-  YAML::Node config = YAML::LoadFile("config.yaml");
-  if (config["name"])
-    name = config["name"].as<string>();
+    YAML::Node config = YAML::LoadFile("config.yaml");
+    if ( config["name"] )
+        name = config["name"].as<std::string>();
 
-  cout << "Welcome " << name << endl;
-  return 0;
+    std::cout << "Welcome " << name << '\n';
+
+    return 0;
 }
