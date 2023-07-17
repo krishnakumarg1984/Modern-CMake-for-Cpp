@@ -4,62 +4,62 @@
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/859
 local status_ok, null_ls = pcall(require, "null-ls")
 if not status_ok then
-  return
+	return
 end
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
 local cppcheck_clang_arg = ""
 -- if vim.fn.executable "clang" == 1 then
---   cppcheck_clang_arg = "--clang"
+--	 cppcheck_clang_arg = "--clang"
 -- end
 
 local cppcheck_builddir_name = "cppcheck_build"
 if vim.fn.isdirectory(cppcheck_builddir_name) == 0 then
-  vim.fn.mkdir(cppcheck_builddir_name)
+	vim.fn.mkdir(cppcheck_builddir_name)
 end
 local cppcheck_builddir_arg = ""
 if vim.fn.isdirectory(cppcheck_builddir_name) == 1 then
-  cppcheck_builddir_arg = "--cppcheck-build-dir=" .. cppcheck_builddir_name
+	cppcheck_builddir_arg = "--cppcheck-build-dir=" .. cppcheck_builddir_name
 end
 
 local cppcheck_project_arg = ""
 local compilation_database_filename = "compile_commands.json"
 if vim.fn.exists(compilation_database_filename) == 1 then
-  cppcheck_project_arg = "--project=" .. compilation_database_filename
+	cppcheck_project_arg = "--project=" .. compilation_database_filename
 end
 
 local cppcheck_suppressions_filename = "cppcheck_suppressions.txt"
 if vim.fn.filereadable(cppcheck_suppressions_filename) == 0 then
-  vim.fn.writefile({ "" }, cppcheck_suppressions_filename, "b")
+	vim.fn.writefile({ "" }, cppcheck_suppressions_filename, "b")
 end
 local cppcheck_suppressions_filename_arg = ""
 if vim.fn.readfile(cppcheck_suppressions_filename) == 1 then
-  cppcheck_suppressions_filename_arg = "--suppressions-list=" .. cppcheck_suppressions_filename
+	cppcheck_suppressions_filename_arg = "--suppressions-list=" .. cppcheck_suppressions_filename
 end
 
 null_ls.register({
-  diagnostics.cmake_lint,
-  diagnostics.cppcheck.with({
-    extra_args = {
-      cppcheck_clang_arg,
-      cppcheck_builddir_arg,
-      cppcheck_project_arg,
-      cppcheck_suppressions_filename_arg,
-      "--inline-suppr",
-      "--language=c++",
-      "--enable=all",
-      "--suppress=missingIncludeSystem",
-      -- "--addon=threadsafety.py",
-    },
-  }),
-  -- diagnostics.clang_check, -- sometimes flags certain warnings with higher severity (i.e. as errors)
-  diagnostics.cpplint,
-  diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
-  formatting.clang_format,
-  formatting.gersemi,
-  formatting.shfmt,
-  formatting.stylua,
+	-- diagnostics.cmake_lint,
+	-- diagnostics.cppcheck.with({
+	-- 	extra_args = {
+	-- 		cppcheck_clang_arg,
+	-- 		cppcheck_builddir_arg,
+	-- 		cppcheck_project_arg,
+	-- 		cppcheck_suppressions_filename_arg,
+	-- 		"--inline-suppr",
+	-- 		"--language=c++",
+	-- 		"--enable=all",
+	-- 		"--suppress=missingIncludeSystem",
+	-- 		-- "--addon=threadsafety.py",
+	-- 	},
+	-- }),
+	-- diagnostics.clang_check, -- sometimes flags certain warnings with higher severity (i.e. as errors)
+	-- diagnostics.cpplint,
+	diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
+	-- formatting.clang_format,
+	-- formatting.gersemi,
+	formatting.shfmt,
+	formatting.stylua,
 })
 null_ls.enable({})
 
@@ -86,7 +86,7 @@ null_ls.enable({})
 -- diagnostics.checkmake,
 -- diagnostics.chktex,
 -- diagnostics.codespell,
--- diagnostics.cspell,  -- requires 'npm'
+-- diagnostics.cspell,	-- requires 'npm'
 -- diagnostics.flake8,
 -- diagnostics.gitlint,
 -- diagnostics.hadolint,
@@ -117,29 +117,29 @@ null_ls.enable({})
 
 local status_ok_nvim_lint, nvim_lint = pcall(require, "lint")
 if not status_ok_nvim_lint then
-  return
+	return
 end
 nvim_lint.linters_by_ft = {
-  cmake = { "cmakelint" },
-  -- cpp = { "clangtidy", "flawfinder" },
-  cpp = {},
-  java = { "checkstyle" },
-  latex = { "lacheck" },
-  python = { "pycodestyle" },
-  tex = { "lacheck" },
-  rst = { "rstlint" },
+	-- cmake = { "cmakelint" },
+	-- cpp = { "clangtidy", "flawfinder" },
+	cpp = {},
+	java = { "checkstyle" },
+	latex = { "lacheck" },
+	python = { "pycodestyle" },
+	tex = { "lacheck" },
+	rst = { "rstlint" },
 }
 
 local utils = require("astronvim.utils")
 
 if vim.fn.executable("clang-tidy") == 1 then
-  -- print "clang-tidy is installed"
-  utils.list_insert_unique(nvim_lint.linters_by_ft.cpp, "clangtidy")
+	-- print "clang-tidy is installed"
+	utils.list_insert_unique(nvim_lint.linters_by_ft.cpp, "clangtidy")
 end
 -- if vim.fn.executable "flawfinder" == 1 then
---   -- print "flawfinder is installed"
---   utils.list_insert_unique(nvim_lint.linters_by_ft.cpp, "flawfinder")
---   utils.list_insert_unique(nvim_lint.linters_by_ft.c, "flawfinder")
+--	 -- print "flawfinder is installed"
+--	 utils.list_insert_unique(nvim_lint.linters_by_ft.cpp, "flawfinder")
+--	 utils.list_insert_unique(nvim_lint.linters_by_ft.c, "flawfinder")
 -- end
 
 -- vim.cmd [[autocmd BufWritePost * lua require('lint').try_lint()]]
