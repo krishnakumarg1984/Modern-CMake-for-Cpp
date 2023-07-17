@@ -1,0 +1,8 @@
+digraph "terminal_app" {
+node [
+  fontsize = "12"
+];
+    "node3" [ label = "terminal_app", shape = egg ];
+    "node0" [ label = "calculations", shape = octagon ];
+    "node3" -> "node0" [ style = dotted ] // terminal_app -> calculations
+}
