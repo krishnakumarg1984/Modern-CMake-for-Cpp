@@ -5,7 +5,7 @@ dotfiles_in_prev_dir=$(find -L .. -maxdepth 1 -type f -name ".*")
 # echo $dotfiles_in_prev_dir
 
 for dotfile in $dotfiles_in_prev_dir; do
-  if [[ $dotfile =~ .*".gitmodules" ]] | [[ $dotfile =~ .*".gitignore" ]] || [[ $dotfile =~ .*".prev" ]] || [[ $dotfile =~ .vim-arsync ]] || [[ $dotfile =~ .*"asynctasks" ]] || [[ $dotfile =~ "null-ls-root" ]] || [[ $dotfile =~ .exrc ]]; then
+ if [[ $dotfile =~ .*".bashrc" ]] || if [[ $dotfile =~ .*".gitmodules" ]] || [[ $dotfile =~ .*".gitignore" ]] || [[ $dotfile =~ .*".prev" ]] || [[ $dotfile =~ .vim-arsync ]] || [[ $dotfile =~ .*"asynctasks" ]] || [[ $dotfile =~ "null-ls-root" ]] || [[ $dotfile =~ .exrc ]]; then
     echo -n ""
   else
     # echo "$dotfile"

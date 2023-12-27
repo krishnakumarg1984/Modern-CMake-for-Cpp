@@ -39,6 +39,8 @@ if vim.fn.readfile(cppcheck_suppressions_filename) == 1 then
 end
 
 null_ls.register({
+  diagnostics.buf,
+  diagnostics.protolint,
   -- diagnostics.cmake_lint,
   diagnostics.cppcheck.with({
     extra_args = {
@@ -54,10 +56,12 @@ null_ls.register({
     },
   }),
   -- diagnostics.clang_check, -- sometimes flags certain warnings with higher severity (i.e. as errors)
+  formatting.buf,
   diagnostics.cpplint,
   diagnostics.shellcheck.with({ diagnostics_format = "[#{c}] #{m} (#{s})" }),
   formatting.clang_format,
   -- formatting.gersemi,
+  formatting.protolint,
   formatting.shfmt,
   formatting.stylua,
 })
